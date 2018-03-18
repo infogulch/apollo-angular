@@ -48,8 +48,8 @@ class ProfileComponent implements OnInit {
       query: CurrentUserForProfile
     })
       .valueChanges
-      .subscribe(({data}) => {
-        this.loading = data.loading;
+      .subscribe(({ data, loading }) => {
+        this.loading = loading;
         this.currentUser = data.currentUser;
       });
   }
@@ -92,7 +92,7 @@ contains many useful methods (like `refetch()`) to manipulate the watched query.
 A normal Observable, has only one method, `subscribe()`.
 
 To use that Apollo's Observable in RxJS we would have to drop those method and
-Since they are necessary to use Apollo with its full potential we had to came up
+Since they are necessary to use Apollo with its full potential we had to come up
 with a solution.
 
 This is why we created the `QueryRef`.
